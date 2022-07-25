@@ -1,0 +1,23 @@
+
+.navClass{
+    color: #181818;
+    position: absolute;
+    width: 100%;
+    top: 0%;
+}
+
+a{
+    color: #bbbaba !important;
+}
+
+a:hover{
+    color: white !important;
+}
+
+ul{
+    position: absolute;
+    left: 31%;
+}
+li{
+    margin-left: 30px;
+}

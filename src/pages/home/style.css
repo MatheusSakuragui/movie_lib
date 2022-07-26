@@ -1,0 +1,44 @@
+.displayTrending{
+    width: 92%;
+    top: 10px;
+    left: 5%;
+    position: relative;
+    
+}
+
+.displayTrending > h1{
+    color: white !important;
+    margin: 20px 0px 10px 0px;
+}
+
+.image{
+    z-index: 100;
+    width: 175%;
+    right: 50%;
+    top: 100px;
+    position: relative;
+    height: 200px;
+    background: linear-gradient(0deg, rgba(0,0,0,0.9026961126247374) 59%, rgba(3,3,3,0.846673703661152) 68%, rgba(3,3,3,0.7766456924566701) 76%, rgba(5,5,5,0.6589986336331408) 82%, rgba(9,9,9,0.5777661406359419) 89%, rgba(9,9,9,0) 100%);
+}
+
+.image > h3{
+    position: relative;
+    top: 50px;
+    left: 8%;
+}
+
+i{
+    color: #d90429
+}
+
+.trendingInfo > h3{
+    margin: 80px 10px 0px 0px ;
+    color: white;
+}
+
+.trendingInfo > img{
+    margin-top: 10px;
+    width: 30%;
+    height: 30%;
+}
+

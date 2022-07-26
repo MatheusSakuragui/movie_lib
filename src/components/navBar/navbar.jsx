@@ -1,5 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 import {useNavigate} from 'react-router-dom'
 import './style.css'
 
@@ -11,19 +14,18 @@ export default function NavBar(){
     }
         
     return(
-        <div className="navClass">
-            <nav>
-                <div className="nav-wrapper grey darken-4">
-                        <ul id="nav-mobile" className="right hide-on-med-and-down ">
-                            <li><a onClick={(e)=>Navegar('/moviegenres')}>Movies</a></li>
-                            <li><a onClick={(e)=>Navegar('/tvgenres')}>TV Series</a></li>
-                            <li><a onClick={(e)=>Navegar('/moviegenres')}>Home</a></li>
-                            <li><a onClick={(e)=>Navegar('/moviegenres')}>Search</a></li>
-                            <li><a onClick={(e)=>Navegar('/moviegenres')}>Sassssss</a></li>
-                        </ul>
-                </div>
-            </nav>
-        </div>
+        <Navbar className="navClass" sticky="top" >
+        <Container>
+          <Navbar.Brand href="#home">Movie Lib</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link onClick={(e)=> Navegar('/')}>Home</Nav.Link>
+              <Nav.Link onClick={(e)=> Navegar('/moviegenres')}>Link</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
 
     )
 }

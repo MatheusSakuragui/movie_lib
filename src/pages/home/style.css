@@ -1,13 +1,15 @@
+
+
 .displayTrending{
     width: 92%;
     top: 10px;
     left: 5%;
     position: relative;
+    color: white;
     
 }
 
 .displayTrending > h1{
-    color: white !important;
     margin: 20px 0px 10px 0px;
 }
 
@@ -23,22 +25,61 @@
 
 .image > h3{
     position: relative;
+    cursor: pointer;
     top: 50px;
     left: 8%;
 }
 
-i{
+.displayTrending > h1 > i{
     color: #d90429
 }
 
-.trendingInfo > h3{
-    margin: 80px 10px 0px 0px ;
+.trendingInfo{
+    height: 800px;
     color: white;
+}
+
+.trendingInfo > h3{
+    cursor: pointer;
+    width: 90%;
+    margin: 80px 10px 0px 0px ;
+}
+
+.trendingInfo > p,h4{
+    position: relative;
+    word-wrap: break-word;
+    left: 35%;
+    bottom: 240px;
+    width: 60%;
+}
+
+.trendingInfo > .btn{
+    position: absolute;
+    
 }
 
 .trendingInfo > img{
     margin-top: 10px;
     width: 30%;
     height: 30%;
+}
+.row{
+    height: 520px;
+}
+.col{
+    height: 200px;
+}
+
+.divTop{
+    width: 92%;
+    top: 10px;
+    left: 2.8%;
+    position: relative;
+}
+.divTop > h1{
+    color: white;
+}
+.divTop > h1 > i {
+    color: yellow;
 }
 

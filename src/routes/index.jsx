@@ -17,7 +17,7 @@ function Routes(){
                     <Route path="/" element={<Home/>} />
                     <Route path="/moviegenres" element={<Generos/>} />
                     <Route path="/tvgenres" element={<Generos/>} />
-                                
+                    <Route path="/view/:type/:id" element={<Generos/>} />                                
                 </Switch>
         </BrowserRouter>
         </>

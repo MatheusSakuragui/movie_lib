@@ -3,7 +3,6 @@ import axios from 'axios'
 import { useEffect } from "react";
 import Button from "../../components/button/button";
 
-
 import './style.css'
 
 export default function Filme(){

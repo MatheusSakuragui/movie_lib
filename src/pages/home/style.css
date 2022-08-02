@@ -1,8 +1,11 @@
+@import "react-alice-carousel/lib/alice-carousel.css";
 
+a{
+    text-decoration: none;
+}
 
 .displayTrending{
     width: 92%;
-    top: 10px;
     left: 5%;
     position: relative;
     color: white;
@@ -10,6 +13,7 @@
 }
 
 .displayTrending > h1{
+    position: initial;
     margin: 20px 0px 10px 0px;
 }
 
@@ -77,9 +81,12 @@
     position: relative;
 }
 .divTop > h1{
+    position: initial;
     color: white;
 }
 .divTop > h1 > i {
     color: yellow;
 }
+
+
 

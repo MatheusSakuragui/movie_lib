@@ -1,0 +1,33 @@
+.backdrop{
+    z-index: -10;
+    position: absolute;
+    height: 600px;
+    width: 100%;
+    opacity: 0.2;
+    transform: scale(1.0);
+}
+
+.poster{    
+    position: relative;
+    top: 50px;
+    left: 15%;
+    width: 80%;
+}
+
+h1{
+    position: relative;
+    color: white;
+    top: 50px;
+}
+
+h3{
+    color: white;
+}
+
+.Internet.Movie.Database,.Metacritic,.Rotten.Tomatoes,.tmdb{
+    width: 25%;
+}
+
+.Rotten.Tomatoes,.Internet.Movie.Database,.tmdb{
+    border-radius: 50%;
+}

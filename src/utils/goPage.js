@@ -1,8 +1,7 @@
 import {useNavigate} from 'react-router-dom'
 
-export default function goPage(id,type){
+export default function GoPage(id,type){
     const navigate = useNavigate()
-    
-    navigate(`view/${type}/${id}`)
+    return navigate(`view/${type}/${id}`)
     
 }

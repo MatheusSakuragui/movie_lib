@@ -45,23 +45,21 @@ export default function Home(){
         1024: { items: 3 },
     };
 
-    const displayTop = [
-        rated.map((topRated)=>
-        <div className="displayTopItem" onDragStart={handleDragStart} role="presentation">
-            <Card style={{ width: '18rem' }}  >
-                <Card.Img variant="top" src={`https://image.tmdb.org/t/p/original/${topRated.poster_path}`} />
-                <Card.Body>
-                    <Card.Title>Teste</Card.Title>
-                    <Card.Text>
-                      Some quick example text to build on the card title and make up the
-                      bulk of the card's content.
-                    </Card.Text>
-                </Card.Body>
-            </Card>  
-        </div>     
-          )
+    const displayTop = [];
 
-        ];
+    rated.map((topRated)=>
+    {var elemento = 
+
+        
+        <Card onDragStart={handleDragStart} role="presentation" border="light">
+            <Card.Img variant="top" src={`https://image.tmdb.org/t/p/original/${topRated.poster_path}`} />
+            <Card.Body> 
+                <Card.Title>{topRated.title} {`(${topRated.release_date ? getYear(topRated.release_date) : '' })`}</Card.Title>
+            </Card.Body>
+        </Card>  
+ 
+    displayTop.push(elemento)}   
+  )
 
     useEffect(()=>{
         let isMounted = true
@@ -133,14 +131,11 @@ export default function Home(){
             </Row>
                 <div className= "divTop">
                     <h1>Top Rated <i className="fa-solid fa-star"></i></h1>
-                    <div className="displayTop" >
-                        
-                        <AliceCarousel responsive={responsive} items={displayTop} infinite={false}/>
-             
-                    
+                    <div className="displayTop" >   
+                        <AliceCarousel responsive={responsive} items={displayTop} infinite={true} disableDotsControls={true} />
                     </div>
                 </div>
-
+                 
             </div>             
     )
 }

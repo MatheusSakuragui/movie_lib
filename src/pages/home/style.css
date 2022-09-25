@@ -81,6 +81,7 @@ a{
     position: relative;
 }
 .divTop > h1{
+    margin: 20px 0px 10px 0px;
     position: initial;
     color: white;
 }
@@ -88,5 +89,14 @@ a{
     color: yellow;
 }
 
+.alice-carousel__stage{
+    width: 80%;
+}
+
+.card{
+    margin: 0px 15px 0px 15px;
+    background-color: #111111;
+    color: white;
+}
 
 

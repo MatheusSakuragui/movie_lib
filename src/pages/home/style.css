@@ -1,10 +1,11 @@
 @import "react-alice-carousel/lib/alice-carousel.css";
 
+
 a{
     text-decoration: none;
 }
 
-.displayTrending{
+.displayTrending, .displayUpcoming{
     width: 92%;
     left: 5%;
     position: relative;
@@ -16,6 +17,8 @@ a{
     position: initial;
     margin: 20px 0px 10px 0px;
 }
+
+
 
 .image{
     z-index: 100;
@@ -34,7 +37,7 @@ a{
     left: 8%;
 }
 
-.displayTrending > h1 > i{
+ i{
     color: #d90429
 }
 
@@ -74,29 +77,43 @@ a{
     height: 200px;
 }
 
-.divTop{
+.displayUpcoming{
     width: 92%;
-    top: 10px;
-    left: 2.8%;
-    position: relative;
-}
-.divTop > h1{
-    margin: 20px 0px 10px 0px;
-    position: initial;
-    color: white;
-}
-.divTop > h1 > i {
-    color: yellow;
 }
 
-.alice-carousel__stage{
-    width: 80%;
+.displayUpcoming > h1 {
+    position:  initial;
+    margin: 50px 50px 20px 0px;  
+    right: 5%;
+}
+
+.card-text > h6 {
+    color: #d90429 !important;
 }
 
 .card{
     margin: 0px 15px 0px 15px;
     background-color: #111111;
     color: white;
+}
+
+.card-title{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-text{
+    max-height: 14ch;
+    white-space: break-spaces;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.slick-slider{
+    padding-left: 20px;
+    height: 80%;
+    width: 100%;
 }
 
 

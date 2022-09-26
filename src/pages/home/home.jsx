@@ -4,6 +4,8 @@ import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import {useNavigate} from 'react-router-dom'
 
+import Slider from "react-slick";
+
 import Carousel from 'react-bootstrap/Carousel';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -19,12 +21,32 @@ import './style.css'
 export default function Home(){
    
 
-    const [rated,setRated] = useState([{}]);
     const [trending,setTrend] = useState([{}]);
-    const [discover,setDiscover] = useState([]);
+    const [upcoming,setUpcoming] = useState([{}]);
+    const [discover,setDiscover] = useState([{}]);
+    const [genres,setGenres] = useState([{}])
+
     const [index, setIndex] = useState(0);
 
+    const settings = {
+        infinite: true,
+        speed: 700,
+        slidesToShow: 3,
+        slidesToScroll: 3
+      };
 
+    function acharGenero(ids){
+        let texto = []
+        for (let indexId = 0; indexId < ids.length; indexId++) {
+            for (let indexGenero = 0; indexGenero < genres.length; indexGenero++) {
+                if(ids[indexId] == genres[indexGenero].id){
+                    texto.push(genres[indexGenero].name)
+                }
+                
+            }
+        }
+        return texto.join(',')
+    }
 
     function verMais(id,type){
         GoPage(id,type)
@@ -37,52 +59,32 @@ export default function Home(){
     const handleSelect = (selectedIndex, e) => {
         setIndex(selectedIndex);
       };
-  
-    const handleDragStart = (e) => e.preventDefault();
-    const responsive = {
-        0: { items: 1 },
-        568: { items: 2 },
-        1024: { items: 3 },
-    };
-
-    const displayTop = [];
-
-    rated.map((topRated)=>
-    {var elemento = 
-
-        
-        <Card onDragStart={handleDragStart} role="presentation" border="light">
-            <Card.Img variant="top" src={`https://image.tmdb.org/t/p/original/${topRated.poster_path}`} />
-            <Card.Body> 
-                <Card.Title>{topRated.title} {`(${topRated.release_date ? getYear(topRated.release_date) : '' })`}</Card.Title>
-            </Card.Body>
-        </Card>  
- 
-    displayTop.push(elemento)}   
-  )
 
     useEffect(()=>{
-        let isMounted = true
         async function obter(){
             axios.get(`
-            https://api.themoviedb.org/3/movie/top_rated?api_key=a49dd29d1dde0f60fd31a433d1dfc35a`).then((res)=>{   
-                if(isMounted){
-                    setRated(res.data.results)
-                }
+            https://api.themoviedb.org/3/discover/movie?api_key=a49dd29d1dde0f60fd31a433d1dfc35a`).then((res)=>{   
+                    setDiscover(res.data.results)
             })
+
             axios.get(`
             https://api.themoviedb.org/3/trending/all/day?api_key=a49dd29d1dde0f60fd31a433d1dfc35a`).then((res)=>{   
-                if(isMounted){
                     setTrend(res.data.results)
                     console.log(res.data.results);
-                   
-                }
             })
+
+            axios.get(`
+            https://api.themoviedb.org/3/movie/upcoming?api_key=a49dd29d1dde0f60fd31a433d1dfc35a`).then((res)=>{    
+                    setUpcoming(res.data.results)
+                    console.log("Upcoming",res.data.results);
+            })
+
+            axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=a49dd29d1dde0f60fd31a433d1dfc35a`).then((res)=>{    
+                setGenres(res.data.genres)
+                console.log(res.data.genres);
+            })            
         }
         obter()
-        return()=>{
-            isMounted = false
-        }
     },[])
     
     return(
@@ -129,13 +131,29 @@ export default function Home(){
                     </div> 
                 </Col>
             </Row>
-                <div className= "divTop">
-                    <h1>Top Rated <i className="fa-solid fa-star"></i></h1>
-                    <div className="displayTop" >   
-                        <AliceCarousel responsive={responsive} items={displayTop} infinite={true} disableDotsControls={true} />
-                    </div>
+            <Row>
+                <div className="displayUpcoming">
+                    <h1>Upcoming <i class="fa-solid fa-calendar-plus"></i></h1>
+                    <Slider {...settings}>
+                        {upcoming.map((up)=>
+                            <div>
+                                <Card border="light" style={{ width: '20rem' }}>
+                                    <Card.Img variant="top" src={`https://image.tmdb.org/t/p/original/${up.backdrop_path}`} />
+                                    <Card.Body>
+                                        <Card.Title>{up.title}</Card.Title>
+                                        <Card.Text>
+                                            <h6>{up.release_date} • </h6>
+                                            {up.overview}
+                                        </Card.Text>
+                                        <Button variant="primary">Go somewhere</Button>
+                                    </Card.Body>
+                                    </Card>
+                            </div>
+                        )}
+                    </Slider>
                 </div>
-                 
+        </Row>
+                        
             </div>             
     )
 }

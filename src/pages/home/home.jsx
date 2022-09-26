@@ -35,18 +35,7 @@ export default function Home(){
         slidesToScroll: 3
       };
 
-    function acharGenero(ids){
-        let texto = []
-        for (let indexId = 0; indexId < ids.length; indexId++) {
-            for (let indexGenero = 0; indexGenero < genres.length; indexGenero++) {
-                if(ids[indexId] == genres[indexGenero].id){
-                    texto.push(genres[indexGenero].name)
-                }
-                
-            }
-        }
-        return texto.join(',')
-    }
+  
 
     function verMais(id,type){
         GoPage(id,type)
@@ -86,6 +75,20 @@ export default function Home(){
         }
         obter()
     },[])
+
+    function acharGenero(ids){
+        console.log(ids);
+        let texto = []
+        for (let indexId = 0; indexId < ids.length; indexId++) {
+            for (let indexGenero = 0; indexGenero < genres.length; indexGenero++) {
+                if(ids[indexId] == genres[indexGenero].id){
+                    texto.push(genres[indexGenero].name)
+                }
+                
+            }
+        }
+        return texto.join(', ')
+    }
     
     return(
         <div className="conteudo">
@@ -142,7 +145,7 @@ export default function Home(){
                                     <Card.Body>
                                         <Card.Title>{up.title}</Card.Title>
                                         <Card.Text>
-                                            <h6>{up.release_date} • </h6>
+                                            <h6>{up.release_date} • {up.genre_ids? acharGenero(up.genre_ids) : null }</h6>
                                             {up.overview}
                                         </Card.Text>
                                         <Button variant="primary">Go somewhere</Button>
